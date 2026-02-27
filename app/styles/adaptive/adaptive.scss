@@ -1,3 +1,4 @@
+@use "../colors/colors.scss" as *;
 @media screen and (max-width: 1100px) {
   .first-pets-section-data-card {
     width: 200px;
@@ -7,6 +8,82 @@
     & span {
       font-size: 1rem !important;
     }
+  }
+  .about-content  {
+    flex-direction: column;
+    width: 100%;
+  }
+  .side-about {
+    height: fit-content;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: {
+      top: 1rem;
+      bottom: 1rem;
+    };
+  }
+  .breeder-block {
+    row-gap: 10px;
+    & span {
+      rotate: 0deg;
+    }
+  }
+  .feedback {
+    & a {
+      row-gap: 10px;
+    }
+    & a span {
+      rotate: 0deg;
+    }
+  }
+  .about {
+    flex-direction: column;
+  }
+  .about-image {
+    width: 100%;
+    height: 500px;
+  }
+  .lsi-image {
+    display: none;
+  }
+  .before-last {
+    backdrop-filter: blur(20px);
+    padding: 10px;
+    border-radius: 10px;
+    height: 100%;
+    & span {
+      font-size: .8rem;
+    }
+  }
+  .first-info {
+    width: 100%;
+  }
+  .last-info {
+    width: 100%;
+    background-image: url("/images/hero-section/2151899858.jpg");
+    background-size: cover;
+    background-position: center;
+    padding: 10px;
+    border-radius: 20px;
+  }
+  .last-info-content  {
+    align-items: flex-end;
+     background-color: rgba(0, 0, 0, 0.39);
+  }
+  .last-info-image {
+    flex-direction: row;
+    align-items: flex-end;
+    background-color: rgba(0, 0, 0, 0.39);
+  }
+  .lsi-content {
+    padding: 0;
+    & span {
+      color: $text-light;
+    }
+  }
+  .text-logo {
+    font-size: 6rem;
   }
 }
 @media screen and (max-width: 995px) {
@@ -118,6 +195,18 @@
     width: 50px;
     height: 50px;
   }
+  .basement-links {
+    padding-top: 3rem;
+    flex-direction: column;
+    padding: 0;
+  }
+  .text-logo {
+    justify-content: flex-start;
+    font-size: 4rem;
+  }
+  .basement {
+    padding-left: 1rem;
+  }
 }
 
 @media screen and (max-width: 630px) {
@@ -190,5 +279,21 @@
   }
   .articles-block {
     padding: 0;
+  }
+  .about-image {
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 0;
+    & span {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .text-logo {
+    font-size: 2rem;
   }
 }

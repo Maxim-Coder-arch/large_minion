@@ -517,7 +517,7 @@
 }
 .first-info {
   width: 90%;
-  min-height: 50%;
+  height: fit-content;
   border-radius: 30px;
   background-color: $bg-secondary;
   padding: 20px;
@@ -681,6 +681,8 @@
 .basement-links {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
   padding: {
     left: 2rem;
     right: 2rem;
