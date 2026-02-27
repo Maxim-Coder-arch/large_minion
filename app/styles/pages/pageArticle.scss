@@ -1,0 +1,72 @@
+@use "../reset/reset.scss" as *;
+@use "../colors/colors.scss" as *;
+@use "../mixins/mixins.scss" as *;
+
+.home {
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  z-index: 999;
+  top: 1rem;
+  right: 1rem;
+  background-image: url("/icons/home.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.article-data {
+  width: 100%;
+  min-height: 100vh;
+  background-color: $text-muted;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  row-gap: 40px;
+  background-image: url("/images/hero-section/Airbrush-IMAGE-ENHANCER-1772122653247-1772122653247.jpg");
+  background-size: cover;
+  background-position: center;
+  padding-bottom: 4rem;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(transparent, $text-muted);
+  }
+}
+.article-content {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  z-index: 2;
+  & h1 {
+    max-width: 500px;
+    color: $text-light;
+    @include font(3rem, 600);
+    text-transform: uppercase;
+  }
+}
+.article {
+  max-width: 500px;
+  padding: 1rem;
+  border-radius: 20px;
+  max-height: 600px;
+  overflow-y: auto;
+  background-color: #00000028;
+  backdrop-filter: blur(20px);
+  & span {
+    color: $text-light;
+    @include font(1.3rem, 100);
+    letter-spacing: 1px;
+    line-height: 30px;
+  }
+  &::-webkit-scrollbar {
+    width: 3px;
+    display: block;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $text-light;
+    border-radius: 10px;
+  }
+}
