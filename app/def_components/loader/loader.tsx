@@ -1,8 +1,15 @@
 'use client';
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { useState } from "react";
 
-const VARIANTS = {
+interface LoadLineProps {
+  direction: 'up' | 'down';
+}
+const VARIANTS: {
+  lineLoader: Variants;
+  loadLine: (props: LoadLineProps | { direction: 'up' | 'down' }) => Variants;
+  container: Variants;
+} = {
   lineLoader: {
     hidden: { 
       width: 0,
@@ -24,8 +31,7 @@ const VARIANTS = {
       }
     }
   },
-  
-  loadLine: (direction: 'up' | 'down') => ({
+  loadLine: ({ direction }) => ({
     hidden: { y: 0 },
     visible: { 
       y: direction === 'up' ? '-100%' : '100%',
@@ -36,7 +42,6 @@ const VARIANTS = {
       }
     }
   }),
-
   container: {
     hidden: { opacity: 1 },
     visible: { 
@@ -47,19 +52,15 @@ const VARIANTS = {
       }
     }
   }
-} as const;
-
+};
 const Loader = () => {
   const [isVisible, setIsVisible] = useState(true);
-
   const handleAnimationComplete = () => {
     setTimeout(() => {
       setIsVisible(false);
     }, 1000);
   };
-
   if (!isVisible) return null;
-
   return (
     <motion.div 
       className="loader"
@@ -70,17 +71,15 @@ const Loader = () => {
     >
       <motion.div 
         className="load load-1"
-        variants={VARIANTS.loadLine('up')}
+        variants={VARIANTS.loadLine({ direction: 'up' })}
       />
-      
       <motion.div 
         className="line-loader"
         variants={VARIANTS.lineLoader}
       />
-      
       <motion.div 
         className="load load-2"
-        variants={VARIANTS.loadLine('down')}
+        variants={VARIANTS.loadLine({ direction: 'down' })}
       />
     </motion.div>
   );

@@ -1,61 +1,70 @@
 'use client';
 import { useEffect, useRef, useState } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue, useSpring, MotionValue } from "framer-motion";
 
 const Cursor = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [isMoving, setIsMoving] = useState(false);
-  const [isHovering, setIsHovering] = useState(false);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [isMoving, setIsMoving] = useState<boolean>(false);
+  const [isHovering, setIsHovering] = useState<boolean>(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const cursorX = useMotionValue(-100);
-  const cursorY = useMotionValue(-100);
-
+  const cursorX: MotionValue<number> = useMotionValue(-100);
+  const cursorY: MotionValue<number> = useMotionValue(-100);
   const springConfig = { damping: 20, stiffness: 250 };
-  const cursorXSpring = useSpring(cursorX, springConfig);
-  const cursorYSpring = useSpring(cursorY, springConfig);
+  const cursorXSpring: MotionValue<number> = useSpring(cursorX, springConfig);
+  const cursorYSpring: MotionValue<number> = useSpring(cursorY, springConfig);
   useEffect(() => {
-    const moveCursor = (e: MouseEvent) => {
+    const isTouchDevice = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+    if (isTouchDevice) {
+      setTimeout(() => {
+        setIsVisible(false);
+      }, 0);
+      return;
+    }
+    const moveCursor = (e: MouseEvent): void => {
       cursorX.set(e.pageX - 12);
       cursorY.set(e.pageY - 12);
       setIsVisible(true);
       setIsMoving(true);
-      
-      clearTimeout(timeoutRef.current);
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
       timeoutRef.current = setTimeout(() => setIsMoving(false), 100);
     };
-    const handleMouseOver = (e: MouseEvent) => {
+
+    const handleMouseOver = (e: MouseEvent): void => {
       const target = e.target as HTMLElement;
       const isClickable = 
         target.tagName === 'BUTTON' ||
         target.tagName === 'A' ||
-        target.closest('button') ||
-        target.closest('a') ||
-        target.closest('[role="button"]') ||
-        target.closest('.target-action') ||
-        target.closest('Link') ||
+        target.closest('button') !== null ||
+        target.closest('a') !== null ||
+        target.closest('[role="button"]') !== null ||
+        target.closest('.target-action') !== null ||
+        target.closest('Link') !== null ||
         window.getComputedStyle(target).cursor === 'pointer';
-      
       setIsHovering(isClickable);
     };
-    const isTouchDevice = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
-    if (isTouchDevice) {
+    const handleMouseLeave = (): void => {
       setIsVisible(false);
-      return;
-    }
-
+    };
+    const handleMouseEnter = (): void => {
+      setIsVisible(true);
+    };
     window.addEventListener("mousemove", moveCursor);
     document.addEventListener("mouseover", handleMouseOver);
-    document.addEventListener("mouseleave", () => setIsVisible(false));
-    document.addEventListener("mouseenter", () => setIsVisible(true));
-
+    document.addEventListener("mouseleave", handleMouseLeave);
+    document.addEventListener("mouseenter", handleMouseEnter);
     return () => {
       window.removeEventListener("mousemove", moveCursor);
       document.removeEventListener("mouseover", handleMouseOver);
-      document.removeEventListener("mouseleave", () => setIsVisible(false));
-      document.removeEventListener("mouseenter", () => setIsVisible(true));
-      clearTimeout(timeoutRef.current);
+      document.removeEventListener("mouseleave", handleMouseLeave);
+      document.removeEventListener("mouseenter", handleMouseEnter);
+      
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
     };
-  }, []);
+  }, [cursorX, cursorY]);
   if (isHovering) return null;
 
   return (

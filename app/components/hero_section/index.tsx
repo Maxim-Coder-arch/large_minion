@@ -1,6 +1,6 @@
 'use client';
 import Link from "next/link";
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import Loader from "@/app/def_components/loader/loader";
 import { ANIMATION_CONFIG } from "@/configs/hero";
 import { CONTENT_ANIMATION_DELAYS } from "@/configs/hero";

@@ -7,10 +7,8 @@ import { useRef } from "react";
 
 const data: IPet[] = petsData.slice(3, 7);
 const SecondPetsSection = () => {
-
     const targetPoint = useRef(null);
     const isViewElementVisible = useInView(targetPoint, { once: true, amount: .2 });
-
     return (
       <div className="second-pets-section" ref={targetPoint}>
         {data.map((pet, index) => (

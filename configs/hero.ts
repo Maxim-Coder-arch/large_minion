@@ -1,12 +1,13 @@
-import { Variants } from "framer-motion";
-
+import { MotionProps, Variants } from "framer-motion";
+type AnimationProps = MotionProps;
+type VariantsProps = Variants;
 export const ANIMATION_CONFIG = {
-  fadeInUp: (customDelay: number = 0, yOffset: number = 50) => ({
+  fadeInUp: (customDelay: number = 0, yOffset: number = 50): AnimationProps => ({
     initial: { 
       opacity: 0, 
       y: yOffset 
     },
-    animate: { 
+    whileInView: { 
       opacity: 1, 
       y: 0,
       transition: {
@@ -14,14 +15,15 @@ export const ANIMATION_CONFIG = {
         delay: customDelay,
         ease: "easeInOut"
       }
-    }
+    },
+    viewport: { once: true, amount: 0.3 }
   }),
   fadeInUpLarge: {
     initial: { 
       opacity: 0, 
       y: "100px" 
     },
-    animate: { 
+    whileInView: { 
       opacity: 1, 
       y: 0,
       transition: {
@@ -29,9 +31,10 @@ export const ANIMATION_CONFIG = {
         delay: 1.7,
         ease: "easeInOut"
       }
-    }
-  },
-  staggerContainer: (staggerChildren: number = 0.2, delayChildren: number = 1.5): Variants => ({
+    },
+    viewport: { once: true, amount: 0.3 }
+  } satisfies AnimationProps,
+  staggerContainer: (staggerChildren: number = 0.2, delayChildren: number = 1.5): VariantsProps => ({
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -41,7 +44,8 @@ export const ANIMATION_CONFIG = {
       }
     }
   }),
-  staggerItem: (yOffset: number = 50): Variants => ({
+
+  staggerItem: (yOffset: number = 50): VariantsProps => ({
     hidden: { 
       opacity: 0, 
       y: yOffset 
@@ -55,20 +59,73 @@ export const ANIMATION_CONFIG = {
       }
     }
   }),
-  cardAnimation: (delay: number) => ({
+
+  cardAnimation: (delay: number): AnimationProps => ({
     initial: { 
       opacity: 0, 
-      y: 50 
+      y: 50,
+      scale: 0.95
     },
-    animate: { 
+    whileInView: { 
       opacity: 1, 
       y: 0,
+      scale: 1,
       transition: {
         duration: 0.5,
         delay,
         ease: "easeInOut"
       }
-    }
+    },
+    viewport: { once: true, amount: 0.2 }
+  }),
+  fadeInLeft: (delay: number = 0): AnimationProps => ({
+    initial: { 
+      opacity: 0, 
+      x: -50 
+    },
+    whileInView: { 
+      opacity: 1, 
+      x: 0,
+      transition: {
+        duration: 0.5,
+        delay,
+        ease: "easeInOut"
+      }
+    },
+    viewport: { once: true, amount: 0.3 }
+  }),
+
+  fadeInRight: (delay: number = 0): AnimationProps => ({
+    initial: { 
+      opacity: 0, 
+      x: 50 
+    },
+    whileInView: { 
+      opacity: 1, 
+      x: 0,
+      transition: {
+        duration: 0.5,
+        delay,
+        ease: "easeInOut"
+      }
+    },
+    viewport: { once: true, amount: 0.3 }
+  }),
+  scaleIn: (delay: number = 0): AnimationProps => ({
+    initial: { 
+      opacity: 0, 
+      scale: 0.8 
+    },
+    whileInView: { 
+      opacity: 1, 
+      scale: 1,
+      transition: {
+        duration: 0.5,
+        delay,
+        ease: "easeInOut"
+      }
+    },
+    viewport: { once: true, amount: 0.3 }
   })
 } as const;
 

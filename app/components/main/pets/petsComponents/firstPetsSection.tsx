@@ -5,14 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-
 const FirstPetsSection = () => {
   const [showData, setShowData] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [isSmallScreen, setIsSmallScreen] = useState<boolean>(false);
   const targetPoint = useRef(null);
   const isViewElementVisible = useInView(targetPoint, { once: true, amount: .5 });
-  
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 1050);
@@ -24,8 +22,6 @@ const FirstPetsSection = () => {
   }, []);
   
   const data: IPet[] = petsData.slice(0, isMobile ? 2 : 3);
-  
-  // На маленьких экранах показываем статичный div без анимации
   if (isSmallScreen) {
     return (
       <>
@@ -70,8 +66,6 @@ const FirstPetsSection = () => {
       </>
     );
   }
-  
-  // Для больших экранов показываем версию с анимацией
   return (
     <>
       <div className="pets-navigation">
