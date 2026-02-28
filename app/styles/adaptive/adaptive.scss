@@ -85,6 +85,14 @@
   .text-logo {
     font-size: 6rem;
   }
+  .pets-images-hero {
+    width: 100% !important;
+  }
+  .pets-hero-section {
+    & h1 {
+      font-size: 2rem !important;
+    }
+  }
 }
 @media screen and (max-width: 995px) {
   .first-pets-section {
@@ -101,6 +109,14 @@
   }
   .second-pets-section {
     display: none;
+  }
+  .im {
+    width: 200px !important;
+    height: 300px !important;
+  }
+  .it {
+    width: 300px !important;
+    height: 400px !important;
   }
 }
 
@@ -207,6 +223,22 @@
   .basement {
     padding-left: 1rem;
   }
+  .pets-images-hero {
+    flex-direction: column !important;
+  }
+  .im {
+    display: none !important;
+  }
+  .it {
+    width: 100% !important;
+    height: 400px !important;
+    border-radius: 0 !important;
+  }
+  .pets-hero-section {
+    & h1 {
+      font-size: 1.5rem !important;
+    }
+  }
 }
 
 @media screen and (max-width: 630px) {
@@ -263,6 +295,11 @@
       left: 10px;
       right: 10px;
     };
+  }
+  .pets-hero-section {
+    & h1 {
+      font-size: 1rem !important;
+    }
   }
   .image-paw {
     width: 100%;
