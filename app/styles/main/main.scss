@@ -317,6 +317,33 @@
     };
   }
 }
+.pets-posts {
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  & h3 {
+    color: $text-light;
+    @include font(4rem, 600);
+    text-transform: uppercase;
+  }
+  & a {
+    z-index: 1001;
+    background-color: $text-light;
+    height: fit-content;
+    border-radius: 12px;
+    @include font(.7rem, 100);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: {
+      left: 2rem;
+      right: 2rem;
+      top: 1rem;
+      bottom: 1rem;
+    };
+  }
+}
 .first-pets-section-image {
   width: 500px;
   height: 400px;
@@ -329,6 +356,7 @@
   display: flex;
   justify-content: space-between;
   width: calc(100% - 520px);
+  z-index: 2;
 }
 .first-pets-section-data-card {
   width: calc((100% / 3) - 15px);

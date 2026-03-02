@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
+import { links } from "./links/data.links";
+
 const FirstPetsSection = () => {
   const [showData, setShowData] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -32,8 +34,9 @@ const FirstPetsSection = () => {
         <div className="first-pets-section" ref={targetPoint}>
           <div className="first-pets-section-image" />
           <div className="first-pets-section-data">
-            {data.map((pet, index) => (
-              <motion.div 
+            {links.map((pet, index) => (
+              <motion.a 
+              href={pet.url}
               initial={{
                 opacity: 0,
                 y: 50
@@ -50,16 +53,16 @@ const FirstPetsSection = () => {
               className="first-pets-section-data-card">
                 <div className="image-wrapper">
                   <Image
-                    src={pet.portait}
-                    alt={pet.name}
+                    src={pet.image}
+                    alt={pet.title}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="pet-image"
                     priority={index < 2}
                   />
                 </div>
-                <span>{pet.name}</span>
-              </motion.div>
+                <span>{pet.title}</span>
+              </motion.a>
             ))}
           </div>
         </div>
@@ -88,8 +91,9 @@ const FirstPetsSection = () => {
         onAnimationComplete={() => setShowData(true)}
         className="first-pets-section-image" />
         <div className="first-pets-section-data">
-          {data.map((pet, index) => (
-            <motion.div 
+          {links.map((pet, index) => (
+            <motion.a 
+            href={pet.url}
             initial={{
               opacity: 0,
               y: 50
@@ -106,16 +110,16 @@ const FirstPetsSection = () => {
             className="first-pets-section-data-card">
               <div className="image-wrapper">
                 <Image
-                  src={pet.portait}
-                  alt={pet.name}
+                  src={pet.image}
+                  alt={pet.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className="pet-image"
                   priority={index < 2}
                 />
               </div>
-              <span>{pet.name}</span>
-            </motion.div>
+              <span>{pet.title}</span>
+            </motion.a>
           ))}
         </div>
       </div>

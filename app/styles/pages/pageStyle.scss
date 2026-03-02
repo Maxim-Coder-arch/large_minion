@@ -207,7 +207,26 @@
   align-items: center;
   column-gap: 30px;
 }
+.kitten-generic {
+  width: 100%;
+  height: fit-content;
+  background-color: $text-muted;
+  padding: 20px;
+  padding-top: 3.5rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  column-gap: 30px;
+}
 .generic {
+  width: calc(100% / 3);
+}
+.kitten {
+  .pet-image-page {width: 100%;}
+  width: calc(100% / 3);
+}
+.parent-generic {
+  .pet-image-page {width: 100%;}
   width: calc(100% / 3);
 }
 .pet-image-page {
@@ -315,4 +334,54 @@
   .generic {
     width: 100%;
   }
+}
+
+.kitten-meta {
+  width: 100%;
+  border-radius: 20px;
+  padding: {
+    top: 5px;
+    bottom: 5px;
+    left: 1rem;
+    right: 1rem;
+  };
+  display: flex;
+  justify-content: space-between;
+  & span {
+    color: $text-primary !important;
+    @include font(1rem, 100);
+  }
+  background-color: $bg-primary;
+}
+.kitten {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.kitten-content {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+    & h3 {
+    color: $text-light;
+    @include font(1.5rem, 600);
+    text-transform: uppercase;
+  }
+  & span {
+    color: $text-light;
+    @include font(1rem, 100);
+  }
+}
+.parent-generic {
+  & h3 {
+    color: $text-light;
+    @include font(1.5rem, 600);
+    text-transform: uppercase;
+    margin-top: 15px;
+  }
+}
+
+.posts-block {
+  width: 100%;
+  min-height: 100vh;
 }
