@@ -14,7 +14,7 @@ export default function TemplatePets({data, url}) {
               <Link key={index} href={`/${url}/${pet.id}`} className="pet-card">
                 <div className="pet-image-container">
                   <Image 
-                    src={pet.portait}
+                    src={pet.portait || pet.image}
                     alt={pet.name}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"

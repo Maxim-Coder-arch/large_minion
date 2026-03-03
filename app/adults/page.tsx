@@ -1,5 +1,11 @@
-import { adultsData } from "../data/adults/adults.data";
+// app/adults/page.js
+import db from '@/lib/db';
 import TemplatePets from "../genercis/templatePets";
-export default function Page() {
-  return <TemplatePets data={adultsData} url="adults" />;
+
+export default async function Page() {
+  const adultsData = await db.getAll('adults', {
+    sort: { id: 1 }
+  });
+  const plainData = JSON.parse(JSON.stringify(adultsData));
+  return <TemplatePets data={plainData} url="adults" />;
 }

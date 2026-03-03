@@ -1,5 +1,5 @@
 // app/article/[slug]/page.js
-import { getDB } from '@/lib/mongodb';
+import db from '@/lib/db';
 import { notFound } from 'next/navigation';
 import GenericMenu from "@/app/genercis/genericMenu";
 import Loader from "@/app/def_components/loader/loader";
@@ -13,11 +13,7 @@ const menuData = [
 
 export default async function ArticlePage({ params }) {
   const { slug } = await params;
-  console.log('🔍 Ищем статью со slug:', slug);
-  const db = await getDB();
-  const data = await db
-    .collection('articles')
-    .findOne({ slug: slug });
+  const data = await db.findById('articles', slug);
   if (!data) {
     notFound();
   }

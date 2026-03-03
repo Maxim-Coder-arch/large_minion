@@ -1,21 +1,22 @@
-// app/graduates/page.js
-import { getDB } from '@/lib/mongodb';
+// app/graduates/[slug]/page.js
+import db from '@/lib/db';
 import TemplateBlank from "@/app/genercis/templateBlank";
+import { notFound } from 'next/navigation';
 
-export default async function Page() {
-  // Подключаемся к БД
-  const db = await getDB();
-  
-  // Получаем всех выпускников из БД
-  const graduatesData = await db
-    .collection('graduates')
-    .find({})
-    .sort({ id: 1 }) // сортируем по id
-    .toArray();
+export default async function Page({ params }: { params: { slug: string } }) {
+  const { slug } = await params;
+  const graduate = await db.findById('graduates', slug);
+  if (!graduate) {
+    notFound();
+  }
+  const allGraduates = await db.getAll('graduates');
+  const plainAllGraduates = JSON.parse(JSON.stringify(allGraduates));
 
   return (
     <div>
-      <TemplateBlank petsData={graduatesData} />
+      <TemplateBlank 
+        petsData={plainAllGraduates} 
+      />
     </div>
   );
 }
