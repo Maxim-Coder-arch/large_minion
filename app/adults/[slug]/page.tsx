@@ -2,6 +2,9 @@
 import db from '@/lib/db';
 import TemplateBlank from "@/app/genercis/templateBlank";
 import { notFound } from "next/navigation";
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default async function Page({ params }) {
   const { slug } = await params;
   const adult = await db.findById('adults', slug);

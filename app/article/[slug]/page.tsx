@@ -4,6 +4,8 @@ import { notFound } from 'next/navigation';
 import GenericMenu from "@/app/genercis/genericMenu";
 import Loader from "@/app/def_components/loader/loader";
 import "../../styles/pages/pageArticle.scss";
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 const menuData = [
   { item: "Главная", section: "/" },

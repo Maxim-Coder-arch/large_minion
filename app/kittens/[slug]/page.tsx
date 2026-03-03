@@ -4,6 +4,8 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import "../../styles/pages/pageStyle.scss";
 import GenericMenu from "@/app/genercis/genericMenu";
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 const menuData = [
   {

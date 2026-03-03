@@ -1,8 +1,9 @@
-// app/pets/page.js
 import db from '@/lib/db';
 import Link from 'next/link';
 import Image from 'next/image';
-import "../styles/pages/pageStyle.scss"; // импортируем стили
+import "../styles/pages/pageStyle.scss";
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default async function PetsBlock() {
   const [adults, graduates, kittens] = await Promise.all([
@@ -56,6 +57,3 @@ export default async function PetsBlock() {
     </div>
   );
 }
-
-// Опционально: отключаем кэширование
-export const dynamic = 'force-dynamic';

@@ -1,5 +1,7 @@
 // components/ArticlesTitle/ArticlesTitle.js
 import db from '@/lib/db';
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default async function ArticlesTitle() {
   const articlesCount = await db.count('articles');

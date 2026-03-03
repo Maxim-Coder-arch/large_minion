@@ -1,6 +1,8 @@
 // components/ArticlesBlock/ArticlesBlock.js
 import Link from "next/link";
 import db from '@/lib/db';
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default async function ArticlesBlock() {
   const articles = await db.getAll('articles', {

@@ -5,6 +5,8 @@ import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 const SecondPetsSection = () => {
   const [posts, setPosts] = useState<IPost[]>([]);

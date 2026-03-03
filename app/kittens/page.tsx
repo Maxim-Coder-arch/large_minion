@@ -4,6 +4,8 @@ import Loader from "../def_components/loader/loader";
 import GenericMenu from "../genercis/genericMenu";
 import TemplateKittens from "../genercis/templateKittens";
 import db from "@/lib/db";
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 const menuData: IMenu[] = [
   {
