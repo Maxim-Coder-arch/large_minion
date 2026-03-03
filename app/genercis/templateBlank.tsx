@@ -1,6 +1,5 @@
 'use client';
 import { useParams } from "next/navigation";
-import { petsData } from "@/app/components/main/pets/petsData/pets.data";
 import Loader from "@/app/def_components/loader/loader";
 import Image from "next/image";
 import "../styles/pages/pageStyle.scss";
@@ -23,7 +22,7 @@ const menuData: IMenu[] = [
   }
 ];
 
-export default function TemplateBlank() {
+export default function TemplateBlank({petsData}) {
   const params = useParams();
   const data = petsData.find(p => p.id.toString() === params.slug);
   if (!data) {

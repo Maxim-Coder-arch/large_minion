@@ -1,12 +1,11 @@
 'use client';
-import { petsData } from "../petsData/pets.data";
+import { IPost, postsData } from "@/app/data/posts/posts.data";
 import Image from "next/image";
-import { IPet } from "@/types/type.data.pets";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
 
-const data: IPet[] = petsData.slice(3, 7);
+const data: IPost[] = postsData.slice(0, 4);
 const SecondPetsSection = () => {
     const targetPoint = useRef(null);
     const isViewElementVisible = useInView(targetPoint, { once: true, amount: .2 });
@@ -35,15 +34,15 @@ const SecondPetsSection = () => {
             className="second-pets-section-data-card">
               <div className="image-wrapper">
                 <Image
-                  src={pet.portait}
-                  alt={pet.name}
+                  src={pet.image}
+                  alt={pet.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className="pet-image"
                   priority={index < 2}
                 />
               </div>
-              <span>{pet.name}</span>
+              <span>{pet.title}</span>
             </motion.div>
           ))}
         </div>

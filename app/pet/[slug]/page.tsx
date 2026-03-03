@@ -32,7 +32,7 @@ export default function PetPage() {
     <>
       <GenericMenu menuData={menuData} />
       <Loader />
-      <TemplateBlank />
+      <TemplateBlank petsData={petsData} />
     </>
   );
 }

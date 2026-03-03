@@ -26,8 +26,7 @@ export default function Page() {
   return (
     <>
     <GenericMenu menuData={menuData} />
-    <Loader />
-      <Loader />
+    {/* <Loader /> */}
       <div className="kitten-generic">
         <div className="parent-generic generic">
           <div className="pet-image-page"> {/* mother */}

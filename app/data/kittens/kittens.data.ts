@@ -21,12 +21,12 @@ interface IKitten {
 export const kittensData: IKitten[] = [
   {
     id: 1,
-    image: "https://sun9-52.userapi.com/s/v1/ig2/h6hp7wbwwy6HXMnIqmXsVOrPuEpDiwm0B3fs5KVkakU1ZEoheV6A0HOFmSmqFDpwsVibFWEZ0TsbuSKjT15vFkND.jpg?quality=95&as=32x28,48x42,72x63,108x95,160x141,240x211,360x317,480x423,540x476,640x564,720x634,1080x952,1280x1128,1440x1269,1960x1727&from=bu&u=xQzYC5kKF9NyfjbhOPqlU4d7-4LUKRc2ZyWmoYrXXow&cs=640x0",
-    name: "Лемми (Largeminion Lemmy)",
-    description: "Очаровательный малыш породы британская короткошерстная, голубого окраса. Возраст 2,5 месяца. Лемми отличается спокойным и уравновешенным характером, уже приучен к лотку и когтеточке. Очень ласковый и контактный мальчик, который станет прекрасным другом для всей семьи. На данный момент зарезервирован.",
+    image: "https://sun9-39.userapi.com/s/v1/ig2/rLQ4ZEyUl-84oU6aI5V56aClsZ-6NQmgwizn0t923a8otzQCH5Sm2GPwiNhNdMYdEy9VTAcv2aD9eDvwkQC7TYsH.jpg?quality=95&as=32x20,48x30,72x45,108x67,160x99,240x149,360x223,480x297,540x334,640x396,720x446,1080x669,1280x793,1440x892,2201x1363&from=bu&u=icB2RJv3RwBgdPvJDeSSQvHFZBzUWqCnaDj-ppM6vps&cs=540x0",
+    name: "Onara (Largeminion Onara)",
+    description: "Голубая девочка. Можно интересоваться!",
     litter: "L1",
-    age: "2,5 месяца",
-    gender: "Мальчик",
+    age: "4 месяца",
+    gender: "Девочка",
     mother: {
       id: 1,
       name: "Ирма (Largeminion Irka)",

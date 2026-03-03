@@ -18,7 +18,7 @@ const menuData: IMenu[] = [
 export default function Page() {
   return <>
     <GenericMenu menuData={menuData} />
-    <Loader />
+    {/* <Loader /> */}
     <TemplateKittens data={kittensData} url="kittens" />
   </>;
 }
