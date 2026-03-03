@@ -1,4 +1,4 @@
-import { articlesData } from "@/app/evidence/articles.data";
+import { articlesData } from "@/app/data/articles/articles.data";
 
 export default function ArticlesTitle() {
   return (

@@ -15,3 +15,25 @@ export default function Home() {
     </>
   );
 }
+
+
+
+/*
+database
+
+username = large_minion_database_1sxcs2d
+
+password = large_minion_rootDs2F
+
+
+large_minion_rootDs2F
+
+
+
+connect - mongodb+srv://large_minion_database_1sxcs2d:large_minion_rootDs2F@largeminion.b2oktwa.mongodb.net/?appName=largeMinion
+
+
+
+npm install mongodb
+
+*/

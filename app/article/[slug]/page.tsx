@@ -1,34 +1,26 @@
-'use client';
-import { articlesData } from "@/app/evidence/articles.data";
-import { useParams } from "next/navigation";
-import "../../styles/pages/pageArticle.scss";
-import Loader from "@/app/def_components/loader/loader";
+// app/article/[slug]/page.js
+import { getDB } from '@/lib/mongodb';
+import { notFound } from 'next/navigation';
 import GenericMenu from "@/app/genercis/genericMenu";
-import { IMenu } from "@/types/type.data.menu";
+import Loader from "@/app/def_components/loader/loader";
+import "../../styles/pages/pageArticle.scss";
 
-const menuData: IMenu[] = [
-  {
-    item: "Главная",
-    section: "/",
-  },
-  {
-    item: "Питомцы",
-    section: "../pets",
-  },
-  {
-    item: "Контакты",
-    section: "channels",
-  }
+const menuData = [
+  { item: "Главная", section: "/" },
+  { item: "Питомцы", section: "../pets" },
+  { item: "Контакты", section: "channels" }
 ];
 
-export default function Articles() {
-  const params = useParams();
-  const data = articlesData.find((item) => item.slug === params.slug);
-
+export default async function ArticlePage({ params }) {
+  const { slug } = await params;
+  console.log('🔍 Ищем статью со slug:', slug);
+  const db = await getDB();
+  const data = await db
+    .collection('articles')
+    .findOne({ slug: slug });
   if (!data) {
-    return <h1>Not found</h1>;
+    notFound();
   }
-
   return (
     <>
       <Loader />
@@ -42,5 +34,5 @@ export default function Articles() {
         </div>
       </div>
     </>
-  )
+  );
 }
