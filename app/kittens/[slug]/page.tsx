@@ -49,7 +49,7 @@ export default async function Page({ params }) {
             <span>Пол: {data.gender}</span>
             <span>Помет: {data.litter}</span>
           </div>
-          <div className="pet-image-page generic"> {/* kitten */}
+          <div className="pet-image-page"> {/* kitten */}
             <Image 
               src={data.image}
               alt={data.name}
@@ -64,7 +64,7 @@ export default async function Page({ params }) {
         </div>
         
         <div className="parent-generic generic">
-          <div className="pet-image-page generic"> {/* father */}
+          <div className="pet-image-page"> {/* father */}
             <Image 
               src={data.father.image}
               alt={data.father.name}
