@@ -3,7 +3,7 @@ import { IMenu } from "@/types/type.data.menu";
 export const menuData: IMenu[] = [
   {
     item: "Главная",
-    section: "projects",
+    section: "main-section",
   },
   {
     item: "Питомцы",
@@ -11,7 +11,7 @@ export const menuData: IMenu[] = [
   },
   {
     item: "Полезные статьи",
-    section: "channels",
+    section: "articles",
   },
   {
     item: "О нас",
@@ -19,10 +19,10 @@ export const menuData: IMenu[] = [
   },
   {
     item: "Faq",
-    section: "members",
+    section: "faq",
   },
   {
     item: "Контакты",
-    section: "channels",
+    section: "basement",
   }
 ];

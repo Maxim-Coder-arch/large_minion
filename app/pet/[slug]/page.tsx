@@ -4,23 +4,7 @@ import { petsData } from "@/app/components/main/pets/petsData/pets.data";
 import Loader from "@/app/def_components/loader/loader";
 import "../../styles/pages/pageStyle.scss";
 import GenericMenu from "@/app/genercis/genericMenu";
-import { IMenu } from "@/types/type.data.menu";
 import TemplateBlank from "@/app/genercis/templateBlank";
-
-const menuData: IMenu[] = [
-  {
-    item: "Главная",
-    section: "/",
-  },
-  {
-    item: "Котики",
-    section: "/pets",
-  },
-  {
-    item: "Контакты",
-    section: "channels",
-  }
-];
 
 export default function PetPage() {
   const params = useParams();
@@ -30,7 +14,7 @@ export default function PetPage() {
   }
   return (
     <>
-      <GenericMenu menuData={menuData} />
+      <GenericMenu />
       <Loader />
       <TemplateBlank petsData={petsData} />
     </>

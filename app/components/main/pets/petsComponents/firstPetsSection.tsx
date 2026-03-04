@@ -1,74 +1,16 @@
 'use client';
-import { IPet } from "@/types/type.data.pets";
-import { petsData } from "../petsData/pets.data";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { links } from "./links/data.links";
 
 const FirstPetsSection = () => {
   const [showData, setShowData] = useState<boolean>(false);
-  const [isMobile, setIsMobile] = useState<boolean>(false);
-  const [isSmallScreen, setIsSmallScreen] = useState<boolean>(false);
   const targetPoint = useRef(null);
   const isViewElementVisible = useInView(targetPoint, { once: true, amount: .5 });
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 1050);
-      setIsSmallScreen(window.innerWidth <= 510);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
   
-  const data: IPet[] = petsData.slice(0, isMobile ? 2 : 3);
-  if (isSmallScreen) {
-    return (
-      <>
-        <div className="pets-navigation">
-          <h3 className="pets-main-title">наши питомцы</h3>
-          <Link href="/pets">Смотреть всех</Link>
-        </div>
-        <div className="first-pets-section" ref={targetPoint}>
-          <div className="first-pets-section-image" />
-          <div className="first-pets-section-data">
-            {links.map((pet, index) => (
-              <motion.a 
-              href={pet.url}
-              initial={{
-                opacity: 0,
-                y: 50
-              }}
-              animate={isViewElementVisible ? {
-                opacity: 1,
-                y: 0
-              } : {}}
-              transition={{
-                delay: .1 * index,
-                ease: "easeOut"
-              }}
-              key={index} 
-              className="first-pets-section-data-card">
-                <div className="image-wrapper">
-                  <Image
-                    src={pet.image}
-                    alt={pet.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="pet-image"
-                    priority={index < 2}
-                  />
-                </div>
-                <span>{pet.title}</span>
-              </motion.a>
-            ))}
-          </div>
-        </div>
-      </>
-    );
-  }
+
   return (
     <>
       <div className="pets-navigation">
@@ -118,7 +60,10 @@ const FirstPetsSection = () => {
                   priority={index < 2}
                 />
               </div>
-              <span>{pet.title}</span>
+              <div className="pet-bottom">
+                <span>{pet.title}</span>
+                <div className="target-action-button"></div>
+              </div>
             </motion.a>
           ))}
         </div>

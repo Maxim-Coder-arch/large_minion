@@ -108,7 +108,7 @@
     width: calc(50% - 5px);
   }
   .second-pets-section {
-    display: none;
+    flex-wrap: wrap;
   }
   .im {
     width: 200px !important;
@@ -268,9 +268,10 @@
   }
   .first-pets-section-data {
     width: 100%;
+    justify-content: space-around !important;
   }
   .first-pets-section-data-card {
-    min-width: 190px;
+    width: 100px;
   }
   .pets-bl {
     padding: {
@@ -280,7 +281,18 @@
   }
   .image-wrapper {
     min-height: 0;
-    height: 200px;
+    height: 100px;
+  }
+  .pet-bottom {
+    .target-action-button {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  .pet-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 10px;
   }
 }
 

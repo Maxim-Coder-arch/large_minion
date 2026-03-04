@@ -1,0 +1,420 @@
+@use "../mixins/mixins.scss" as *;
+$bg-primary: #e8f0f8;      // Светлый основной фон (сделал светлее)
+$bg-secondary: #d1e0ec;     // Вторичный фон
+$bg-tertiary: #b8d0e0;      // Третичный фон
+$bg-card: #ffffff;          // Фон карточек (сделал белым для контраста)
+$bg-hover: #c9d9e8;         // Фон при наведении
+
+// Текстовые цвета
+$text-primary: #0a1a2b;      // Основной текст (темнее)
+$text-secondary: #2c4056;    // Вторичный текст
+$text-muted: #4f6f8f;        // Приглушенный текст
+$text-light: #f5f9ff;        // Светлый текст
+
+// Акценты и границы
+$border-light: #2c3e50;      // Темные границы
+$accent-soft: #5f7d9c;       // Мягкий акцент
+
+// КОНТРАСТНЫЕ ЦВЕТА (премиум)
+$accent-deep: #0a2472;       // Глубокий индиго (очень контрастный)
+$accent-gold: #c9a227;       // Благородное золото
+$accent-rust: #b85c3a;       // Терракотовый/ржавый
+$accent-teal: #1e5f6b;       // Глубокий бирюзовый
+$shadow-deep: rgba(10, 36, 114, 0.2); // Тень с оттенком индиго
+
+
+.large-minion-container {
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(145deg, $bg-primary 0%, $bg-secondary 100%);
+  color: $text-primary;
+  font-family: 'Inter', 'Manrope', system-ui, -apple-system, sans-serif;
+  display: flex;
+  align-items: center;
+  padding: 4rem 6rem;
+  box-sizing: border-box;
+  position: relative;
+  
+  // Премиальная текстура (оставил, она мягкая и незаметная)
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 30% 40%, rgba($accent-gold, 0.02) 0%, transparent 30%),
+      radial-gradient(circle at 70% 80%, rgba($accent-deep, 0.03) 0%, transparent 40%);
+    pointer-events: none;
+  }
+  
+  // Декоративная линия (оставил, но сделал тоньше)
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 6rem;
+    right: 6rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, $accent-gold, $accent-deep, $accent-gold, transparent);
+    opacity: 0.2;
+  }
+}
+
+.large-minion-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.large-minion-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  background: transparent; // Убрал фон карточек
+  border: none; // Убрал рамки
+  border-radius: 0;
+  transition: all 0.3s ease;
+  position: relative;
+  
+  // Только легкая тень при наведении
+  &:hover {
+    transform: translateY(-4px);
+    
+    .large-minion-big-number {
+      color: rgba($accent-deep, 0.8);
+    }
+  }
+}
+
+.large-minion-tag {
+  @include font(0.75rem, 600);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: $accent-teal;
+  margin-bottom: 0.25rem;
+  transition: color 0.3s ease;
+}
+
+.large-minion-title {
+  @include font(4.5rem, 800);
+  line-height: 0.95;
+  margin: 0 0 0.5rem 0;
+  color: $text-primary;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  position: relative;
+  
+  // Легкая тень для объема
+  text-shadow: 2px 2px 0 rgba($accent-deep, 0.08);
+  
+  // Стилизация первой буквы
+  &::first-letter {
+    color: $accent-deep;
+    font-size: 5.5rem;
+    font-weight: 900;
+    margin-right: -5px;
+  }
+}
+
+.large-minion-subtitle {
+  @include font(1.3rem, 400);
+  color: $accent-teal;
+  margin-bottom: 0.75rem;
+  font-style: italic;
+  position: relative;
+  display: inline-block;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: $accent-gold;
+  }
+}
+
+// НУМЕРАЦИЯ - сделал заметнее
+.large-minion-big-number {
+  @include font(4rem, 800);
+  color: rgba($accent-deep, 0.5); // Увеличил непрозрачность с 0.4 до 0.5
+  line-height: 1;
+  margin: 0.25rem 0;
+  transition: all 0.3s ease;
+  font-family: 'Manrope', sans-serif;
+  letter-spacing: -2px;
+  position: relative;
+  display: inline-block;
+  
+  // Добавил легкое свечение для заметности
+  text-shadow: 0 0 10px rgba($accent-deep, 0.1);
+}
+
+.large-minion-text {
+  @include font(1.2rem, 500);
+  line-height: 1.5;
+  color: $text-primary;
+  margin: 0.25rem 0;
+}
+
+.large-minion-accent {
+  @include font(1.3rem, 800);
+  color: $accent-gold;
+  background: linear-gradient(135deg, rgba($accent-deep, 0.05) 0%, rgba($accent-gold, 0.08) 100%);
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  display: inline-block;
+  border: 1px solid rgba($accent-gold, 0.2);
+  letter-spacing: -0.5px;
+}
+
+.large-minion-small-text {
+  @include font(0.9rem, 400);
+  color: $text-secondary;
+  line-height: 1.7;
+  margin-top: 1rem;
+  padding-left: 1rem;
+  border-left: 2px solid $accent-teal; // Простая линия вместо градиента
+}
+
+// Декоративные элементы для блоков - сделал мягче
+@for $i from 1 through 5 {
+  .large-minion-block:nth-child(#{$i}) {
+    .large-minion-big-number {
+      // Убрал сложный градиент, оставил просто цвет
+      color: rgba($accent-deep, 0.6);
+      
+      // Добавил небольшой отступ для каждого номера
+      &::before {
+        content: '#';
+        font-size: 2rem;
+        color: rgba($accent-gold, 0.3);
+        margin-right: 4px;
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+// Специальный стиль для первого блока (упростил)
+.large-minion-block:first-child {
+  .large-minion-title {
+    &::after {
+      content: '✦';
+      position: absolute;
+      bottom: -1rem;
+      right: 0;
+      font-size: 2rem;
+      color: $accent-gold;
+      opacity: 0.3;
+    }
+  }
+}
+
+// Адаптивность
+@media (max-width: 1024px) {
+  .large-minion-container {
+    padding: 3rem 2rem;
+    
+    &::after {
+      left: 2rem;
+      right: 2rem;
+    }
+  }
+  
+  .large-minion-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .large-minion-title {
+    font-size: 3.8rem;
+    
+    &::first-letter {
+      font-size: 4.5rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .large-minion-container {
+    padding: 2rem 1.5rem;
+    align-items: flex-start;
+    
+    &::after {
+      left: 1.5rem;
+      right: 1.5rem;
+    }
+  }
+  
+  .large-minion-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .large-minion-block {
+    padding: 1.5rem 1rem;
+  }
+  
+  .large-minion-title {
+    font-size: 3.2rem;
+    
+    &::first-letter {
+      font-size: 3.8rem;
+    }
+    
+    &::after {
+      display: none;
+    }
+  }
+  
+  .large-minion-big-number {
+    font-size: 3.2rem;
+  }
+}
+
+// Блок заводчика (выделяющийся)
+.breeder-featured {
+  position: relative;
+  background: linear-gradient(145deg, rgba($bg-card, 0.8), rgba($bg-card, 0.95));
+  border-radius: 16px;
+  padding: 2rem !important;
+  border: 1px solid rgba($accent-gold, 0.2);
+  box-shadow: 0 15px 30px -10px $shadow-deep;
+  
+  // Золотая полоска сверху
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 2rem;
+    right: 2rem;
+    height: 3px;
+    background: linear-gradient(90deg, $accent-gold, $accent-deep);
+    border-radius: 3px 3px 0 0;
+  }
+  
+  // Иконка "лучший выбор"
+  &::after {
+    content: '★';
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    color: $accent-gold;
+    opacity: 0.3;
+  }
+  
+  .large-minion-tag {
+    color: $accent-gold;
+    font-weight: 700;
+  }
+  
+  .large-minion-big-number {
+    color: $accent-deep;
+    font-size: 2.5rem !important;
+    margin-bottom: 0.5rem;
+    
+    &::before {
+      display: none; // Убираем решетку для имени
+    }
+  }
+}
+
+.breeder-content {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.breeder-info {
+  flex: 1;
+}
+
+.breeder-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 3px solid $accent-gold;
+  box-shadow: 0 5px 15px rgba($accent-deep, 0.3);
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.05);
+    border-color: $accent-deep;
+  }
+}
+
+.breeder-contact {
+  margin: 1rem 0 0.5rem;
+  width: 100%;
+}
+
+.breeder-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1.2rem;
+  background: linear-gradient(135deg, $accent-deep, darken($accent-deep, 5%));
+  color: $text-light;
+  text-decoration: none;
+  border-radius: 40px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba($accent-gold, 0.3);
+  box-shadow: 0 4px 10px rgba($accent-deep, 0.3);
+  
+  &:hover {
+    transform: translateY(-2px);
+    .breeder-link-arrow {
+      transform: translateX(5px);
+    }
+  }
+}
+
+.breeder-link-arrow {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+// Адаптивность для блока заводчика
+@media (max-width: 1024px) {
+  .breeder-featured {
+    grid-column: span 2; // На планшете блок занимает 2 колонки
+  }
+}
+
+@media (max-width: 768px) {
+  .breeder-featured {
+    grid-column: span 1;
+    
+    &::before {
+      left: 1rem;
+      right: 1rem;
+    }
+  }
+  
+  .breeder-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .breeder-avatar {
+    width: 100px;
+    height: 100px;
+  }
+}

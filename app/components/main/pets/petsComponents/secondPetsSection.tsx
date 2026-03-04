@@ -72,7 +72,7 @@ const SecondPetsSection = () => {
 
   return (
     <>
-      <div className="pets-posts">
+      <div className="pets-posts pets-navigation">
         <h3 className="pets-main-title">посты</h3>
         <Link href="/posts">Смотреть все посты</Link>
       </div>
@@ -81,9 +81,9 @@ const SecondPetsSection = () => {
           <div 
             
             key={post.id || index} 
-            className="second-pets-section-data-card"
+            className="second-pets-section-data-card-opt"
           >
-            <div className="image-wrapper">
+            <div className="image-wrapper-opt">
               <Image
                 src={post.image}
                 alt={post.title}

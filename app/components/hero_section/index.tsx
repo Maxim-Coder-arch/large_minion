@@ -34,7 +34,7 @@ const HeroSection = () => {
             <span>Хороший уход</span>
           </motion.div>
           
-          <Link className="target-action" href="#">
+          <Link className="target-action" href="/pets">
             <motion.div 
               className="target-action-button"
               {...ANIMATION_CONFIG.fadeInUp(CONTENT_ANIMATION_DELAYS.button)}

@@ -4,7 +4,38 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { IMenu } from "@/types/type.data.menu";
 
-const ScrollMenu = ({menuData}: {menuData: IMenu[]}) => {
+const ScrollMenu = () => {
+  const staticMenuData: IMenu[] = [
+    {
+      item: "Главная",
+      section: "/",
+    },
+    {
+      item: "Котята",
+      section: "/kittens",
+    },
+    {
+      item: "Взрослые",
+      section: "/adults",
+    },
+    {
+      item: "Выпускники",
+      section: "/graduates",
+    },
+    {
+      item: "Посты",
+      section: "/posts",
+    },
+    {
+      item: "Все питомцы",
+      section: "/pets",
+    },
+    {
+      item: "Контакты",
+      section: "basement",
+    }
+  ];
+
   return (
     <motion.nav 
     initial={{
@@ -20,7 +51,7 @@ const ScrollMenu = ({menuData}: {menuData: IMenu[]}) => {
     }}
     className="scroll-menu">
       <ul>
-        {menuData.map((item, index) => (
+        {staticMenuData.map((item, index) => (
           <motion.li 
           initial={{
             opacity: 0,
@@ -42,10 +73,43 @@ const ScrollMenu = ({menuData}: {menuData: IMenu[]}) => {
     </motion.nav>
   )
 }
-const GenericMenu = ({menuData}: {menuData: IMenu[]}) => {
+
+const GenericMenu = () => {
   const [isScrolled, setIsScrolled] = useState<boolean>(true);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
+  
+  const staticMenuData: IMenu[] = [
+    {
+      item: "Главная",
+      section: "/",
+    },
+    {
+      item: "Котята",
+      section: "/kittens",
+    },
+    {
+      item: "Взрослые",
+      section: "/adults",
+    },
+    {
+      item: "Выпускники",
+      section: "/graduates",
+    },
+    {
+      item: "Посты",
+      section: "/posts",
+    },
+    {
+      item: "Все питомцы",
+      section: "/pets",
+    },
+    {
+      item: "Контакты",
+      section: "basement",
+    }
+  ];
+
   useEffect(() => {
     const handleScroll = () => {
       const scrolled = window.scrollY === 0;
@@ -63,6 +127,7 @@ const GenericMenu = ({menuData}: {menuData: IMenu[]}) => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
   if (isMobile) {
     return (
       <>
@@ -71,16 +136,17 @@ const GenericMenu = ({menuData}: {menuData: IMenu[]}) => {
             <span key={index} className={`${isMenuOpen ? `active-line-${index}` : ""}`}></span>
           ))}
         </button>
-        {isMenuOpen && <ScrollMenu menuData={menuData} />}
+        {isMenuOpen && <ScrollMenu />}
       </>
     )
   }
+
   return (
     isScrolled ? (
       <nav className="menu">
         <span>Large Minion</span>
         <ul>
-          {menuData.map((item, index) => (
+          {staticMenuData.map((item, index) => (
             <motion.li 
             initial={{
               opacity: 0,
@@ -107,7 +173,7 @@ const GenericMenu = ({menuData}: {menuData: IMenu[]}) => {
             <span key={index} className={`${isMenuOpen ? `active-line-${index}` : ""}`}></span>
           ))}
         </button>
-        {isMenuOpen && <ScrollMenu menuData={menuData} />}
+        {isMenuOpen && <ScrollMenu />}
       </>
     )
   )

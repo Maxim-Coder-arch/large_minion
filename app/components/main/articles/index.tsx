@@ -3,7 +3,7 @@ import ArticlesTitle from "./articlesTitle";
 
 const Articles = () => {
   return (
-    <section>
+    <section id="articles">
       <div className="articles">
         <ArticlesTitle />
         <ArticlesBLock />
