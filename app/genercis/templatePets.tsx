@@ -33,7 +33,6 @@ export default function TemplatePets({data, url}) {
               </Link>
             ))
           }
-          {/* <TemplatePets data={petsData} /> */}
         </div>
       </div>
     </div>

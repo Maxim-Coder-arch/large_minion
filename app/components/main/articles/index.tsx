@@ -1,12 +1,14 @@
-import ArticlesBLock from "./articlesBlock";
+import ArticlesBlock from "./articlesBlock";
 import ArticlesTitle from "./articlesTitle";
+// import './articles.scss';
+import "../../../styles/articlesStyle/articlesStyle.scss";
 
 const Articles = () => {
   return (
     <section id="articles">
       <div className="articles">
         <ArticlesTitle />
-        <ArticlesBLock />
+        <ArticlesBlock />
       </div>
     </section>
   )

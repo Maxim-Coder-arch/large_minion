@@ -1,15 +1,15 @@
-// components/ArticlesTitle/ArticlesTitle.js
 import db from '@/lib/db';
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export default async function ArticlesTitle() {
   const articlesCount = await db.count('articles');
-
+  
   return (
     <div className="articles-title">
       <div className="info-articles">
         <span>Largeminion Eri</span>
+        <div className="brewer-photo" /> {/* Блок с фото */}
         <div className="info-articles-data">
           <div className="articles-count generic-articles">
             <h5>{articlesCount}</h5>

@@ -1,8 +1,7 @@
-// components/SecondPetsSection/SecondPetsSection.js
 'use client';
 import { IPost } from "@/app/data/posts/posts.data";
 import Image from "next/image";
-import { motion, useInView } from "framer-motion";
+import { useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 export const dynamic = 'force-dynamic';

@@ -4,14 +4,9 @@ import { notFound } from 'next/navigation';
 import GenericMenu from "@/app/genercis/genericMenu";
 import Loader from "@/app/def_components/loader/loader";
 import "../../styles/pages/pageArticle.scss";
+
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
-
-const menuData = [
-  { item: "Главная", section: "/" },
-  { item: "Питомцы", section: "../pets" },
-  { item: "Контакты", section: "channels" }
-];
 
 export default async function ArticlePage({ params }) {
   const { slug } = await params;
@@ -22,7 +17,7 @@ export default async function ArticlePage({ params }) {
   return (
     <>
       <Loader />
-      <GenericMenu menuData={menuData} />
+      <GenericMenu />
       <div className="article-data">
         <div className="article-content">
           <h1>{data.title}</h1>

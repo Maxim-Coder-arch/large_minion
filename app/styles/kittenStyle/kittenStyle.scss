@@ -1,0 +1,262 @@
+@use "../reset/reset.scss" as *;
+@use "../mixins/mixins.scss" as *;
+
+// Цветовая палитра (минималистичная)
+$bg-primary: #708ba4;      // Твой $text-muted как основной фон
+$bg-secondary: #5f7d9c;     // Чуть темнее для градиента
+$bg-card: #ffffff;          // Белый для карточек
+
+$text-primary: #0a1a2b;     // Темно-синий
+$text-secondary: #2c4056;   // Средний синий
+$text-light: #f5f9ff;       // Светлый
+
+$accent-soft: #5f7d9c;      // Мягкий акцент
+$shadow-soft: rgba(10, 26, 43, 0.1); // Тень
+
+.kitten-generic {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 8rem 2rem 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
+  gap: 2rem;
+  align-items: start;
+  position: relative;
+  min-height: 100vh;
+}
+.kitten-section {
+  background: linear-gradient(145deg, $bg-primary, $bg-secondary);
+}
+
+// Общие стили для карточек
+.generic {
+  background: $bg-card;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px $shadow-soft;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    box-shadow: 0 8px 20px $shadow-soft;
+  }
+}
+
+// Родительские карточки
+.parent-generic {
+  text-align: center;
+  
+  .pet-image-page {
+    position: relative;
+    width: 100%;
+    height: 260px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+    background: $bg-primary;
+    
+    img {
+      object-fit: cover;
+    }
+  }
+  
+  h3 {
+    @include font(1.2rem, 500);
+    color: $text-primary;
+    margin: 0.5rem 0 0;
+  }
+}
+
+.mother-content, .father-content {
+  padding: 0.25rem 0;
+}
+
+// Центральная карточка котенка
+.kitten {
+  grid-column: 2;
+  padding: 2rem;
+  
+  .pet-image-page {
+    position: relative;
+    width: 100%;
+    height: 360px;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    background: $bg-primary;
+    
+    img {
+      object-fit: cover;
+    }
+  }
+}
+
+.kitten-meta {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.25rem;
+  
+  span {
+    @include font(0.9rem, 400);
+    color: $text-secondary;
+    background: none;
+    padding: 0;
+    
+    // Только иконки
+    &::before {
+      margin-right: 4px;
+      opacity: 0.6;
+    }
+  }
+}
+
+.kitten-content {
+  text-align: center;
+  
+  h3 {
+    @include font(2rem, 600);
+    color: $text-primary;
+    margin: 0.5rem 0 0.75rem;
+    line-height: 1.2;
+  }
+  
+  span {
+    @include font(1rem, 400);
+    color: $text-secondary;
+    line-height: 1.6;
+    display: block;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+
+// Адаптивность
+@media screen and (max-width: 1100px) {
+  .kitten-generic {
+    padding: 7rem 2rem 3rem;
+    gap: 1.5rem;
+  }
+  
+  .parent-generic .pet-image-page {
+    height: 220px;
+  }
+  
+  .kitten .pet-image-page {
+    height: 320px;
+  }
+  
+  .kitten-content h3 {
+    font-size: 1.8rem;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .kitten-generic {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .kitten {
+    grid-column: 1;
+    order: 1;
+  }
+  
+  .parent-generic {
+    order: 2;
+    
+    &:first-of-type {
+      order: 2;
+    }
+    
+    &:last-of-type {
+      order: 3;
+    }
+  }
+  
+  .parent-generic .pet-image-page {
+    height: 280px;
+  }
+  
+  .kitten .pet-image-page {
+    height: 380px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .kitten-generic {
+    padding: 6rem 1.5rem 2rem;
+  }
+  
+  .generic {
+    padding: 1.2rem;
+  }
+  
+  .kitten {
+    padding: 1.5rem;
+  }
+  
+  .kitten-meta span {
+    font-size: 0.85rem;
+  }
+  
+  .kitten-content {
+    h3 {
+      font-size: 1.6rem;
+    }
+    
+    span {
+      font-size: 0.95rem;
+    }
+  }
+  
+  .parent-generic .pet-image-page {
+    height: 240px;
+  }
+  
+  .kitten .pet-image-page {
+    height: 320px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .kitten-generic {
+    padding: 5rem 1rem 2rem;
+  }
+  
+  .generic {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+  
+  .kitten {
+    padding: 1.2rem;
+  }
+  
+  .kitten-meta {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  
+  .kitten-content {
+    h3 {
+      font-size: 1.4rem;
+    }
+    
+    span {
+      font-size: 0.9rem;
+    }
+  }
+  
+  .parent-generic .pet-image-page {
+    height: 200px;
+  }
+  
+  .kitten .pet-image-page {
+    height: 280px;
+  }
+}

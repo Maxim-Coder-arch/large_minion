@@ -1,0 +1,218 @@
+@use '../mixins/mixins.scss' as *;
+
+$bg-primary: #e8f0f8;      // Светлый основной фон (сделал светлее)
+$bg-secondary: #d1e0ec;     // Вторичный фон
+$bg-tertiary: #b8d0e0;      // Третичный фон
+$bg-card: #ffffff;          // Фон карточек (сделал белым для контраста)
+$bg-hover: #c9d9e8;         // Фон при наведении
+
+// Текстовые цвета
+$text-primary: #0a1a2b;      // Основной текст (темнее)
+$text-secondary: #2c4056;    // Вторичный текст
+$text-muted: #4f6f8f;        // Приглушенный текст
+$text-light: #f5f9ff;        // Светлый текст
+
+// Акценты и границы
+$border-light: #2c3e50;      // Темные границы
+$accent-soft: #5f7d9c;       // Мягкий акцент
+
+// КОНТРАСТНЫЕ ЦВЕТА (премиум)
+$accent-deep: #0a2472;       // Глубокий индиго (очень контрастный)
+$accent-gold: #c9a227;       // Благородное золото
+$accent-rust: #b85c3a;       // Терракотовый/ржавый
+$accent-teal: #1e5f6b;       // Глубокий бирюзовый
+$shadow-deep: rgba(10, 36, 114, 0.15); // Тень с оттенком индиго
+
+.lm-posts-section {
+  background-color: $text-muted;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.lm-posts-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 6rem 4rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 2.5rem;
+  position: relative;
+}
+
+.lm-post-card {
+  background: $bg-card;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba($accent-deep, 0.1);
+  box-shadow: 0 8px 20px $shadow-deep;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-4px);
+    border-color: rgba($accent-gold, 0.3);
+  }
+  
+  // Тонкая золотая полоска сверху
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, $accent-gold, $accent-deep, $accent-gold);
+    opacity: 0.3;
+    z-index: 2;
+  }
+}
+
+.lm-post-card__image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  
+  // Градиентное наложение на изображение
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: linear-gradient(to top, rgba($bg-card, 0.8), transparent);
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+.lm-post-card__image {
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  
+  .lm-post-card:hover & {
+    transform: scale(1.03);
+  }
+}
+
+.lm-post-card__content {
+  padding: 2rem 1.8rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex: 1;
+}
+
+.lm-post-card__description {
+  h3, .lm-post-card__title {
+    @include font(1.5rem, 700);
+    color: $text-primary;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+    position: relative;
+    display: inline-block;
+    
+    // Золотой акцент под заголовком
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: $accent-gold;
+    }
+  }
+}
+
+.lm-post-card__excerpt {
+  @include font(1rem, 400);
+  color: $text-secondary;
+  line-height: 1.7;
+  display: block;
+}
+
+.lm-post-card__action {
+  margin-top: auto;
+}
+
+.lm-post-card__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 2rem;
+  background: $accent-deep;
+  color: $text-light;
+  text-decoration: none;
+  border-radius: 40px;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.3px;
+  transition: all 0.2s ease;
+  border: none;
+  width: fit-content;
+}
+
+// Стили для пустого состояния
+.lm-posts-grid:empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  
+  &::after {
+    content: 'Пока нет записей';
+    @include font(1.2rem, 500);
+    color: $text-light;
+    text-align: center;
+    background: rgba($bg-card, 0.1);
+    padding: 2rem;
+    border-radius: 40px;
+    backdrop-filter: blur(5px);
+  }
+}
+
+// Адаптивность
+@media (max-width: 1024px) {
+  .lm-posts-grid {
+    padding: 4rem 2rem;
+    gap: 2rem;
+  }
+  
+  .lm-post-card__image-wrapper {
+    height: 240px;
+  }
+}
+
+@media (max-width: 768px) {
+  .lm-posts-grid {
+    padding: 3rem 1.5rem;
+    grid-template-columns: 1fr;
+  }
+  
+  .lm-post-card__content {
+    padding: 1.5rem;
+  }
+  
+  .lm-post-card__title {
+    font-size: 1.3rem;
+  }
+  
+  .lm-post-card__link {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .lm-posts-grid {
+    padding: 2rem 1rem;
+  }
+  
+  .lm-post-card__image-wrapper {
+    height: 200px;
+  }
+}
