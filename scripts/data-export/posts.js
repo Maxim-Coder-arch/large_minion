@@ -1,4 +1,4 @@
-// scripts/data-export/posts.js
+
 export const postsData = [
   {
     id: 1,

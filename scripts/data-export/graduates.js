@@ -1,4 +1,4 @@
-// scripts/data-export/graduates.js
+
 export const graduatesData = [
   {
     id: 1,

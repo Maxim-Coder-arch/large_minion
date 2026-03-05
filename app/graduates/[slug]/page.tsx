@@ -1,4 +1,3 @@
-// app/graduates/[slug]/page.js
 import db from '@/lib/db';
 import TemplateBlank from "@/app/genercis/templateBlank";
 import { notFound } from 'next/navigation';

@@ -1,4 +1,4 @@
-// scripts/data-export/articles.js
+
 export const articlesData = [
   {
     index: 1,

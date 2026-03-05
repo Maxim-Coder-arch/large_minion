@@ -1,4 +1,3 @@
-// app/article/[slug]/page.js
 import db from '@/lib/db';
 import { notFound } from 'next/navigation';
 import GenericMenu from "@/app/genercis/genericMenu";
@@ -8,7 +7,7 @@ import "../../styles/pages/pageArticle.scss";
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
-export default async function ArticlePage({ params }) {
+export default async function ArticlePage({ params }: { params: { slug: string } }) {
   const { slug } = await params;
   const data = await db.findById('articles', slug);
   if (!data) {

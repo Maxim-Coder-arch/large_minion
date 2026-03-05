@@ -1,4 +1,3 @@
-// scripts/data-export/adults.js
 export const adultsData = [
   {
     id: 1,

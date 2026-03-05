@@ -5,8 +5,6 @@ const About = () => {
     return (
       <div className="large-minion-container">
       <div className="large-minion-grid">
-        
-        {/* Блок 1: Название и статус */}
         <div className="large-minion-block">
           <span className="large-minion-tag">ПИТОМНИК</span>
           <h1 className="large-minion-title">
@@ -17,8 +15,6 @@ const About = () => {
             Монопородный питомник мейн-кунов
           </p>
         </div>
-
-        {/* Блок 2: Клуб и система */}
         <div className="large-minion-block">
           <span className="large-minion-tag">КЛУБ</span>
           <p className="large-minion-big-number">01</p>
@@ -30,8 +26,6 @@ const About = () => {
             Ведем деятельность согласно племенному положению клуба
           </p>
         </div>
-
-        {/* Блок 3: Философия (Здоровье) */}
         <div className="large-minion-block">
           <span className="large-minion-tag">ФИЛОСОФИЯ</span>
           <p className="large-minion-big-number">02</p>
@@ -43,8 +37,6 @@ const About = () => {
             Наша племенная работа направлена на получение потомства с идеальными внешними данными
           </p>
         </div>
-
-        {/* Блок 4: Достижения */}
         <div className="large-minion-block">
           <span className="large-minion-tag">ДОСТИЖЕНИЯ</span>
           <p className="large-minion-big-number">03</p>
@@ -56,8 +48,6 @@ const About = () => {
             Неоднократно получали награды в международных рингах
           </p>
         </div>
-
-        {/* Блок 5: Забота (Ветеринария) */}
         <div className="large-minion-block">
           <span className="large-minion-tag">ЗАБОТА</span>
           <p className="large-minion-big-number">04</p>
@@ -69,8 +59,6 @@ const About = () => {
             Каждый питомец получает достойный уход и содержание
           </p>
         </div>
-
-        {/* Блок 6: Заводчик (выделяющийся блок) */}
         <div className="large-minion-block breeder-featured">
           <span className="large-minion-tag">ЗАВОДЧИК</span>
           <div className="breeder-content">

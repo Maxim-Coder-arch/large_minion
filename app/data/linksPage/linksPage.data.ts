@@ -1,8 +1,4 @@
-interface ILink {
-  title: string;
-  image: string;
-  url: string;
-}
+import { ILink } from "@/types/link.type";
 
 export const links: ILink[] = [
   {

@@ -1,7 +1,6 @@
 'use client';
 import { IPost } from "@/app/data/posts/posts.data";
 import Image from "next/image";
-import { useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 export const dynamic = 'force-dynamic';
@@ -13,7 +12,6 @@ const SecondPetsSection = () => {
   const [error, setError] = useState<string | null>(null);
   
   const targetPoint = useRef(null);
-  const isViewElementVisible = useInView(targetPoint, { once: true, amount: .2 });
 
   useEffect(() => {
     const loadPosts = async () => {
@@ -26,12 +24,10 @@ const SecondPetsSection = () => {
         }
         
         const data = await response.json();
-        console.log('📦 Загруженные посты:', data);
         setPosts(data);
         setError(null);
       } catch (err) {
-        console.error('Ошибка загрузки постов:', err);
-        setError('Не удалось загрузить посты');
+        setError('Не удалось загрузить посты ' + err);
       } finally {
         setLoading(false);
       }
@@ -39,11 +35,6 @@ const SecondPetsSection = () => {
 
     loadPosts();
   }, []);
-
-  // Проверяем видимость для отладки
-  useEffect(() => {
-    console.log('👁️ Видимость секции:', isViewElementVisible);
-  }, [isViewElementVisible]);
 
   if (loading) {
     return (

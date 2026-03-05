@@ -1,10 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import "../styles/pages/pageStyle.scss";
+import { IPet } from "@/types/type.data.pets";
 
-export default function TemplatePets({data, url}) {
+export default function TemplatePets({data, url}: {data: IPet[], url: string}) {
   return (
-    // @ts-ignore
     <div className="pets-block">
       <div className="pets-cards">
         <div className="separator"></div>

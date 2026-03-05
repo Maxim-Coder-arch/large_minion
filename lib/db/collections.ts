@@ -1,11 +1,9 @@
-// lib/db/collections.js
-// Здесь описываем все коллекции и их особенности
 export const collections = {
   kittens: {
     name: 'kittens',
-    searchField: 'id',           // поле для поиска по умолчанию
-    searchType: 'number',         // тип поля (number, string, objectId)
-    defaultSort: { id: 1 },       // сортировка по умолчанию
+    searchField: 'id',
+    searchType: 'number',
+    defaultSort: { id: 1 },
     fields: ['id', 'name', 'image', 'description', 'litter', 'age', 'gender', 'mother', 'father']
   },
   adults: {
@@ -24,7 +22,7 @@ export const collections = {
   },
   articles: {
     name: 'articles',
-    searchField: 'slug',          // для статей ищем по slug
+    searchField: 'slug',
     searchType: 'string',
     defaultSort: { index: 1 },
     fields: ['index', 'title', 'description', 'slug']
@@ -33,7 +31,7 @@ export const collections = {
     name: 'posts',
     searchField: 'id',
     searchType: 'number',
-    defaultSort: { id: -1 },       // новые посты первыми
+    defaultSort: { id: -1 },
     fields: ['id', 'title', 'description', 'image', 'urlToVk']
   }
 };

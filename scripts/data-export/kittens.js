@@ -1,4 +1,4 @@
-// scripts/data-export/kittens.js
+
 export const kittensData = [
   {
     id: 1,

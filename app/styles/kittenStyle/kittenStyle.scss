@@ -1,19 +1,15 @@
 @use "../reset/reset.scss" as *;
 @use "../mixins/mixins.scss" as *;
 
-// Цветовая палитра (минималистичная)
-$bg-primary: #708ba4;      // Твой $text-muted как основной фон
-$bg-secondary: #5f7d9c;     // Чуть темнее для градиента
-$bg-card: #ffffff;          // Белый для карточек
+// Никаких переменных, только чистые цвета и уникальные классы
 
-$text-primary: #0a1a2b;     // Темно-синий
-$text-secondary: #2c4056;   // Средний синий
-$text-light: #f5f9ff;       // Светлый
+.lm_kitten_page_wrapper {
+  background: linear-gradient(145deg, #708ba4, #5f7d9c);
+  min-height: 100vh;
+  width: 100%;
+}
 
-$accent-soft: #5f7d9c;      // Мягкий акцент
-$shadow-soft: rgba(10, 26, 43, 0.1); // Тень
-
-.kitten-generic {
+.lm_kitten_grid_container {
   max-width: 1400px;
   margin: 0 auto;
   padding: 8rem 2rem 4rem;
@@ -22,241 +18,213 @@ $shadow-soft: rgba(10, 26, 43, 0.1); // Тень
   gap: 2rem;
   align-items: start;
   position: relative;
-  min-height: 100vh;
-}
-.kitten-section {
-  background: linear-gradient(145deg, $bg-primary, $bg-secondary);
 }
 
-// Общие стили для карточек
-.generic {
-  background: $bg-card;
+.lm_kitten_parent_card {
+  background: #ffffff;
   border-radius: 16px;
   padding: 1.5rem;
-  box-shadow: 0 4px 12px $shadow-soft;
+  box-shadow: 0 4px 12px rgba(10, 26, 43, 0.1);
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  transition: all 0.2s ease;
-  
-  &:hover {
-    box-shadow: 0 8px 20px $shadow-soft;
-  }
-}
-
-// Родительские карточки
-.parent-generic {
+  width: 100%;
+  min-width: 0;
   text-align: center;
   
-  .pet-image-page {
-    position: relative;
-    width: 100%;
-    height: 260px;
-    border-radius: 12px;
-    overflow: hidden;
-    margin-bottom: 0.5rem;
-    background: $bg-primary;
-    
-    img {
-      object-fit: cover;
-    }
-  }
-  
-  h3 {
-    @include font(1.2rem, 500);
-    color: $text-primary;
-    margin: 0.5rem 0 0;
+  &:hover {
+    box-shadow: 0 8px 20px rgba(10, 26, 43, 0.15);
   }
 }
 
-.mother-content, .father-content {
-  padding: 0.25rem 0;
-}
-
-// Центральная карточка котенка
-.kitten {
-  grid-column: 2;
+.lm_kitten_center_card {
+  background: #ffffff;
+  border-radius: 16px;
   padding: 2rem;
+  box-shadow: 0 4px 12px rgba(10, 26, 43, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  min-width: 0;
+  grid-column: 2;
   
-  .pet-image-page {
-    position: relative;
-    width: 100%;
-    height: 360px;
-    border-radius: 16px;
-    overflow: hidden;
-    margin-bottom: 1rem;
-    background: $bg-primary;
-    
-    img {
-      object-fit: cover;
-    }
+  &:hover {
+    box-shadow: 0 8px 20px rgba(10, 26, 43, 0.15);
   }
 }
 
-.kitten-meta {
+.lm_kitten_image_wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #708ba4;
+  flex-shrink: 0;
+  
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.lm_kitten_center_image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #708ba4;
+  flex-shrink: 0;
+  margin-bottom: 1.5rem;
+  
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.lm_kitten_parent_name {
+  @include font(1.2rem, 500);
+  color: #0a1a2b;
+  margin: 0.5rem 0 0;
+  word-break: break-word;
+}
+
+.lm_kitten_meta_info {
   display: flex;
   justify-content: center;
   gap: 0.75rem;
   flex-wrap: wrap;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
   
   span {
     @include font(0.9rem, 400);
-    color: $text-secondary;
-    background: none;
-    padding: 0;
+    color: #2c4056;
+    background: rgba(112, 139, 164, 0.1);
+    padding: 0.4rem 1rem;
+    border-radius: 30px;
+    display: inline-flex;
+    align-items: center;
     
-    // Только иконки
     &::before {
-      margin-right: 4px;
+      margin-right: 6px;
       opacity: 0.6;
     }
   }
 }
 
-.kitten-content {
+.lm_kitten_name_title {
+  @include font(2rem, 600);
+  color: #0a1a2b;
+  margin: 0.5rem 0 1rem;
+  line-height: 1.2;
+  word-break: break-word;
   text-align: center;
-  
-  h3 {
-    @include font(2rem, 600);
-    color: $text-primary;
-    margin: 0.5rem 0 0.75rem;
-    line-height: 1.2;
-  }
-  
-  span {
-    @include font(1rem, 400);
-    color: $text-secondary;
-    line-height: 1.6;
-    display: block;
-    max-width: 500px;
-    margin: 0 auto;
-  }
+}
+
+.lm_kitten_description_text {
+  @include font(1rem, 400);
+  color: #2c4056;
+  line-height: 1.6;
+  display: block;
+  max-width: 500px;
+  margin: 0 auto;
+  word-break: break-word;
+  text-align: center;
+}
+
+.lm_kitten_parent_content {
+  padding: 0.25rem 0;
 }
 
 // Адаптивность
 @media screen and (max-width: 1100px) {
-  .kitten-generic {
+  .lm_kitten_grid_container {
     padding: 7rem 2rem 3rem;
     gap: 1.5rem;
   }
   
-  .parent-generic .pet-image-page {
-    height: 220px;
-  }
-  
-  .kitten .pet-image-page {
-    height: 320px;
-  }
-  
-  .kitten-content h3 {
+  .lm_kitten_name_title {
     font-size: 1.8rem;
   }
 }
 
 @media screen and (max-width: 900px) {
-  .kitten-generic {
+  .lm_kitten_grid_container {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
   
-  .kitten {
+  .lm_kitten_center_card {
     grid-column: 1;
     order: 1;
   }
   
-  .parent-generic {
+  .lm_kitten_parent_card {
     order: 2;
-    
-    &:first-of-type {
-      order: 2;
-    }
-    
-    &:last-of-type {
-      order: 3;
-    }
-  }
-  
-  .parent-generic .pet-image-page {
-    height: 280px;
-  }
-  
-  .kitten .pet-image-page {
-    height: 380px;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .kitten-generic {
+  .lm_kitten_grid_container {
     padding: 6rem 1.5rem 2rem;
   }
   
-  .generic {
+  .lm_kitten_parent_card {
     padding: 1.2rem;
   }
   
-  .kitten {
+  .lm_kitten_center_card {
     padding: 1.5rem;
   }
   
-  .kitten-meta span {
+  .lm_kitten_meta_info span {
     font-size: 0.85rem;
   }
   
-  .kitten-content {
-    h3 {
-      font-size: 1.6rem;
-    }
-    
-    span {
-      font-size: 0.95rem;
-    }
+  .lm_kitten_name_title {
+    font-size: 1.6rem;
   }
   
-  .parent-generic .pet-image-page {
-    height: 240px;
-  }
-  
-  .kitten .pet-image-page {
-    height: 320px;
+  .lm_kitten_description_text {
+    font-size: 0.95rem;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .kitten-generic {
+  .lm_kitten_grid_container {
     padding: 5rem 1rem 2rem;
   }
   
-  .generic {
+  .lm_kitten_parent_card {
     padding: 1rem;
     border-radius: 12px;
   }
   
-  .kitten {
+  .lm_kitten_center_card {
     padding: 1.2rem;
   }
   
-  .kitten-meta {
+  .lm_kitten_meta_info {
     flex-direction: column;
     align-items: center;
-    gap: 0.25rem;
-  }
-  
-  .kitten-content {
-    h3 {
-      font-size: 1.4rem;
-    }
+    gap: 0.5rem;
     
     span {
-      font-size: 0.9rem;
+      width: 100%;
+      justify-content: center;
     }
   }
   
-  .parent-generic .pet-image-page {
-    height: 200px;
+  .lm_kitten_name_title {
+    font-size: 1.4rem;
   }
   
-  .kitten .pet-image-page {
-    height: 280px;
+  .lm_kitten_description_text {
+    font-size: 0.9rem;
   }
 }

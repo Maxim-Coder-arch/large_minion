@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "lib/mongodb.js", "app/api/test-large/route.js"  ],
+, "lib/mongodb.js", "app/api/test-large/route.js", "lib/db/client.js", "lib/db/index.js"  ],
   "exclude": ["node_modules"]
 }

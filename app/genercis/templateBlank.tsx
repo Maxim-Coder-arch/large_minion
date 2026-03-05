@@ -5,8 +5,9 @@ import Image from "next/image";
 import "../styles/pages/pageStyle.scss";
 import Link from "next/link";
 import GenericMenu from "@/app/genercis/genericMenu";
+import { IPet } from "@/types/type.data.pets";
 
-export default function TemplateBlank({petsData}) {
+export default function TemplateBlank({petsData}: {petsData: IPet[]}) {
   const params = useParams();
   const data = petsData.find(p => p.id.toString() === params.slug);
   if (!data) {

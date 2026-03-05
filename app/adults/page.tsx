@@ -1,4 +1,3 @@
-// app/adults/page.js
 import db from '@/lib/db';
 import TemplatePets from "../genercis/templatePets";
 import GenericMenu from '../genercis/genericMenu';

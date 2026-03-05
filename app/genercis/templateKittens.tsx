@@ -4,7 +4,6 @@ import "../styles/pages/pageStyle.scss";
 
 export default function TemplateKittens({data, url}) {
   return (
-    // @ts-ignore
     <div className="pets-block">
       <div className="pets-cards">
         <div className="separator"></div>

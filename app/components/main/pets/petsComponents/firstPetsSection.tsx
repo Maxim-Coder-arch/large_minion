@@ -3,13 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { links } from "./links/data.links";
+import { links } from "@/app/data/linksPage/linksPage.data";
 
 const FirstPetsSection = () => {
   const [showData, setShowData] = useState<boolean>(false);
   const targetPoint = useRef(null);
   const isViewElementVisible = useInView(targetPoint, { once: true, amount: .5 });
-  
 
   return (
     <>

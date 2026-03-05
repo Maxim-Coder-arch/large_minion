@@ -9,7 +9,7 @@ export default async function ArticlesTitle() {
     <div className="articles-title">
       <div className="info-articles">
         <span>Largeminion Eri</span>
-        <div className="brewer-photo" /> {/* Блок с фото */}
+        <div className="brewer-photo" />
         <div className="info-articles-data">
           <div className="articles-count generic-articles">
             <h5>{articlesCount}</h5>

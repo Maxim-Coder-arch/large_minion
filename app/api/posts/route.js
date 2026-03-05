@@ -1,19 +1,15 @@
-// app/api/posts/route.js
 import { NextResponse } from 'next/server';
 import db from '@/lib/db';
 
 export async function GET(request) {
   try {
-    // Получаем параметры запроса
     const { searchParams } = new URL(request.url);
     const limit = searchParams.get('limit') ? parseInt(searchParams.get('limit')) : null;
 
     // Получаем все посты из БД
     let query = db.find('posts', {
-      sort: { id: -1 } // сначала новые
+      sort: { id: -1 }
     });
-
-    // Если есть limit, применяем его
     if (limit) {
       query = db.find('posts', {
         sort: { id: -1 },

@@ -138,7 +138,7 @@ export default function MessageBox() {
               <div className="chat-header-info">
                 <div className="breeder-info">
                   <div 
-                    className="breeder-avatar"
+                    className="breeder-avatar-message"
                     style={{ backgroundImage: 'url(/images/hero-section/breeder.png)' }}
                   />
                   <div className="breeder-details">

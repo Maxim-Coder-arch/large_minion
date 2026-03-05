@@ -11,8 +11,6 @@ export async function GET() {
     MONGODB_URI_preview: process.env.MONGODB_URI ? 
       process.env.MONGODB_URI.substring(0, 30) + '...' : 'not set'
   };
-  
-  // Проверяем подключение к БД
   let dbStatus = 'not tried';
   let collections = [];
   let articlesCount = 0;
@@ -20,19 +18,13 @@ export async function GET() {
   try {
     const db = await getDB();
     dbStatus = 'connected';
-    
-    // Получаем список коллекций
     const collectionsList = await db.listCollections().toArray();
     collections = collectionsList.map(c => c.name);
-    
-    // Считаем статьи
     articlesCount = await db.collection('articles').countDocuments();
     
   } catch (error) {
     dbStatus = `error: ${error.message}`;
   }
-  
-  // Проверяем локальные данные
   let localArticlesCount = 0;
   try {
     const { articlesData } = await import('@/app/evidence/articles.data');
@@ -52,7 +44,7 @@ export async function GET() {
       articlesCount: localArticlesCount
     },
     verdict: envVars.USE_DB === 'true' && dbStatus === 'connected' 
-      ? '✅ ДОЛЖНЫ ИСПОЛЬЗОВАТЬСЯ ДАННЫЕ ИЗ БД' 
-      : '⚠️ ИСПОЛЬЗУЮТСЯ ЛОКАЛЬНЫЕ ДАННЫЕ'
+      ? 'ДОЛЖНЫ ИСПОЛЬЗОВАТЬСЯ ДАННЫЕ ИЗ БД' 
+      : 'ИСПОЛЬЗУЮТСЯ ЛОКАЛЬНЫЕ ДАННЫЕ'
   });
 }
