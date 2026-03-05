@@ -12,7 +12,7 @@ export default async function Page() {
   const plainData = JSON.parse(JSON.stringify(adultsData));
   return <>
     <GenericMenu />
-    <TemplatePets data={plainData} url="adults" />;
+    <TemplatePets data={plainData} url="adults" />
   </>
   
 }

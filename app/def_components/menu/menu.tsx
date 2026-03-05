@@ -33,6 +33,7 @@ const ScrollMenu = () => {
             delay: .05 * index,
             ease: "easeOut"
           }}
+          className={index === 0 ? "active-point-menu" : ""}
           key={index}>
             <Link href={`#${item.section}`}>{item.item}</Link>
           </motion.li>
@@ -93,6 +94,7 @@ const Menu = () => {
               delay: .1 * index,
               ease: "easeOut"
             }}
+            className={index === 0 ? "active-point-menu" : ""}
             key={index}>
               <Link href={`#${item.section}`}>{item.item}</Link>
             </motion.li>

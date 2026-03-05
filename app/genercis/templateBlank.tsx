@@ -5,22 +5,6 @@ import Image from "next/image";
 import "../styles/pages/pageStyle.scss";
 import Link from "next/link";
 import GenericMenu from "@/app/genercis/genericMenu";
-import { IMenu } from "@/types/type.data.menu";
-
-const menuData: IMenu[] = [
-  {
-    item: "Главная",
-    section: "/",
-  },
-  {
-    item: "Котики",
-    section: "/pets",
-  },
-  {
-    item: "Контакты",
-    section: "channels",
-  }
-];
 
 export default function TemplateBlank({petsData}) {
   const params = useParams();
@@ -30,7 +14,7 @@ export default function TemplateBlank({petsData}) {
   }
   return (
     <>
-      <GenericMenu menuData={menuData} />
+      <GenericMenu />
       <Loader />
       <div className="pet-page">
         <div className="title-pet generic">

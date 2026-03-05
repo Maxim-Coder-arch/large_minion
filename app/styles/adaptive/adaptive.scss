@@ -1,4 +1,23 @@
 @use "../colors/colors.scss" as *;
+
+.active-point-menu {
+  padding: {
+    top: 4px;
+    bottom: 4px;
+    left: 10px;
+    right: 10px;
+  };
+  border-radius: 12px;
+  background-color: $border-light;
+}
+.active-menu-item {
+  padding: {
+    top: 4px;
+    bottom: 4px;
+  };
+  border-radius: 12px;
+  background-color: $border-light;
+}
 @media screen and (max-width: 1100px) {
   .first-pets-section-data-card {
     width: 200px;
