@@ -2,6 +2,7 @@ import db from '@/lib/db';
 import Link from 'next/link';
 import Image from 'next/image';
 import "../styles/pages/pageStyle.scss";
+
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 

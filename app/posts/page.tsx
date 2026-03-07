@@ -6,6 +6,9 @@ import "../styles/postsStyles/postsStyles.scss";
 import { IPost } from '../data/posts/posts.data';
 import { Metadata } from 'next';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   title: "Посты | Large Minion",
   description: "Питомник мейн-кунов Large Minion (Большой баловень) зарегистрирован в WCF, состоит в КЛК Kominet. Наши питомцы - победители выставок с крепким здоровьем и идеальными экстерьерными данными. Все животные регулярно прививаются и получают достойный уход.",
