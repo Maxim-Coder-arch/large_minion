@@ -1,0 +1,14 @@
+.error-container {
+  width: 100%;
+  min-height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e8f0f8;
+  border-radius: 20px;
+}
+
+.error-message {
+  color: #708ba4;
+  font-size: 2rem;
+}

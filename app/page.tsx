@@ -6,6 +6,9 @@ import Pets from "./components/main/pets";
 import Menu from "./def_components/menu/menu";
 import MessageBox from "./def_components/message/messageBox";
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default function Home() {
   return (
     <>

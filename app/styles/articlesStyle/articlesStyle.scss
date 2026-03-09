@@ -21,21 +21,21 @@ $shadow-soft: rgba(10, 36, 114, 0.08);
 #articles {
   scroll-margin-top: 80px;
   width: 100%;
-  background: linear-gradient(145deg, $bg-primary 0%, $bg-secondary 100%);
   position: relative;
-  
+  background: $bg-primary;
+}
+.article-data {
+  background-image: url("/images/hero-section/Airbrush-IMAGE-ENHANCER-1772122653247-1772122653247.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
   &::before {
-    content: '';
+    content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, $accent-gold, $accent-deep, $accent-gold, transparent);
-    opacity: 0.15;
+    inset: 0;
+    background-image: radial-gradient(transparent, rgba(255, 255, 255, 0.437));
   }
 }
-
 .articles {
   max-width: 1280px;
   margin: 0 auto;
@@ -44,8 +44,6 @@ $shadow-soft: rgba(10, 36, 114, 0.08);
   flex-direction: column;
   gap: 4rem;
 }
-
-// ArticlesTitle Styles
 .articles-title {
   width: 100%;
 }
@@ -55,7 +53,6 @@ $shadow-soft: rgba(10, 36, 114, 0.08);
   align-items: stretch;
   gap: 2rem;
   
-  // Левая часть с именем и фото
   > span {
     @include font(4.5rem, 800);
     color: $text-primary;
@@ -85,7 +82,6 @@ $shadow-soft: rgba(10, 36, 114, 0.08);
   }
 }
 
-// Новый блок с фото
 .brewer-photo {
   flex: 0 0 180px;
   height: 180px;
@@ -377,5 +373,332 @@ $shadow-soft: rgba(10, 36, 114, 0.08);
     span {
       font-size: 0.75rem;
     }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Цветовая палитра (твоя оригинальная)
+$bg-primary: #b8cdde;      // Светлый основной фон
+$bg-secondary: #a0bed1;     // Вторичный фон
+$bg-tertiary: #95b0c7;      // Третичный фон
+$bg-card: #7394a7;          // Фон карточек
+$bg-hover: #869cad;         // Фон при наведении
+
+// Текстовые цвета
+$text-primary: #122435;      // Основной текст (темный)
+$text-secondary: #4a6579;    // Вторичный текст
+$text-muted: #708ba4;        // Приглушенный текст
+$text-light: #eee8eb;        // Светлый текст
+
+// Акценты и границы
+$border-light: #26343b;      // Темные границы
+$accent-soft: #708ba4;       // Мягкий акцент
+
+// Дополнительные переменные
+$shadow-soft: rgba(18, 36, 53, 0.1); // Тень на основе text-primary
+
+// Навигация
+.home {
+  width: 44px;
+  height: 44px;
+  position: fixed;
+  z-index: 999;
+  top: 1.5rem;
+  right: 1.5rem;
+  background-image: url("/icons/home.png");
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  background-color: $bg-card;
+  box-shadow: 0 4px 15px $shadow-soft;
+  transition: transform 0.2s ease;
+  border: 2px solid rgba($text-light, 0.5);
+  
+  &:hover {
+    transform: scale(1.05);
+    border-color: $text-light;
+  }
+}
+
+// Основной контейнер
+.article-data {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 8rem 2rem 4rem;
+  position: relative;
+  background-image: url("/images/hero-section/Airbrush-IMAGE-ENHANCER-1772122653247-1772122653247.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(transparent, rgba(255, 255, 255, 0.437));
+  }
+}
+
+// Контент статьи
+.article-content {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3rem;
+  align-items: start;
+  z-index: 2;
+  position: relative;
+  
+  h1 {
+    color: $text-primary;
+    @include font(3rem, 700);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin: 0;
+    position: sticky;
+    top: 8rem;
+    padding-right: 2rem;
+    
+    // Акцентная линия
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -1rem;
+      left: 0;
+      width: 80px;
+      height: 3px;
+      background: $bg-card;
+      border-radius: 2px;
+    }
+  }
+}
+
+// Блок с текстом статьи
+.article {
+  background: rgba($bg-tertiary, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  padding: 2.5rem;
+  max-height: 70vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 40px -15px $shadow-soft;
+  position: relative;
+  border: 1px solid rgba($bg-card, 0.2);
+  
+  // Улучшаем читаемость текста
+  span {
+    color: $text-primary;
+    @include font(1.1rem, 400);
+    line-height: 1.8;
+    display: block;
+    
+    // Параграфы
+    p {
+      margin-bottom: 1.5rem;
+      color: $text-secondary;
+      
+      &:first-child {
+        margin-top: 0;
+      }
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    
+    // Выделение важного
+    strong {
+      color: $text-primary;
+      font-weight: 600;
+      background: rgba($bg-card, 0.2);
+      padding: 0.1rem 0.3rem;
+      border-radius: 4px;
+    }
+    
+    // Цитаты
+    em {
+      color: $text-primary;
+      font-style: italic;
+      border-left: 3px solid $bg-card;
+      padding-left: 1rem;
+      display: block;
+      margin: 1.5rem 0;
+    }
+    
+    // Списки
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+      color: $text-secondary;
+      
+      li {
+        margin-bottom: 0.5rem;
+        line-height: 1.7;
+      }
+    }
+    
+    // Заголовки внутри статьи
+    h2, h3, h4 {
+      color: $text-primary;
+      margin: 2rem 0 1rem;
+      font-weight: 600;
+      
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+    
+    h2 {
+      @include font(1.8rem, 600);
+      letter-spacing: -0.01em;
+    }
+    
+    h3 {
+      @include font(1.4rem, 600);
+    }
+  }
+  
+  // Скроллбар
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: rgba($text-primary, 0.05);
+    border-radius: 10px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: $bg-card;
+    border-radius: 10px;
+    opacity: 0.5;
+    
+    &:hover {
+      background: $text-primary;
+    }
+  }
+  
+  scrollbar-width: thin;
+  scrollbar-color: $bg-card rgba($text-primary, 0.05);
+}
+
+// Мета-информация
+.article-meta {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba($bg-card, 0.1);
+  border-radius: 16px;
+  border-left: 4px solid $bg-card;
+  
+  p {
+    color: $text-secondary;
+    @include font(0.95rem, 400);
+    margin-bottom: 0.5rem;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+    
+    strong {
+      color: $text-primary;
+      font-weight: 600;
+    }
+  }
+}
+
+// Адаптивность
+@media screen and (max-width: 1000px) {
+  .article-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    
+    h1 {
+      font-size: 2.5rem;
+      position: static;
+      top: auto;
+      padding-right: 0;
+      
+      &::after {
+        width: 60px;
+      }
+    }
+  }
+  
+  .article-data {
+    padding: 6rem 2rem 3rem;
+  }
+  
+  .article {
+    max-height: 60vh;
+    padding: 2rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .article-data {
+    padding: 5rem 1.5rem 2rem;
+  }
+  
+  .article-content {
+    h1 {
+      font-size: 2.2rem;
+    }
+  }
+  
+  .article {
+    padding: 1.5rem;
+    
+    span {
+      font-size: 1rem;
+      line-height: 1.7;
+      
+      h2 {
+        font-size: 1.5rem;
+      }
+      
+      h3 {
+        font-size: 1.2rem;
+      }
+    }
+  }
+  
+  .home {
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .article-data {
+    padding: 4rem 1rem 2rem;
+  }
+  
+  .article-content {
+    h1 {
+      font-size: 1.8rem;
+    }
+  }
+  
+  .article {
+    padding: 1.2rem;
+    max-height: 70vh;
   }
 }

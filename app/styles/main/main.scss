@@ -269,7 +269,9 @@
   background-position: right;
   background-image: url("/images/hero-section/elvis2.jpg");
 }
-
+#pets {
+  background-color: rgb(232, 240, 248);
+}
 .pets-bl {
   background-color: $text-muted;
   padding: {
@@ -278,6 +280,8 @@
     left: 2rem;
     right: 2rem;
   };
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
 }
 .first-pets-section {
   min-height: 300px;

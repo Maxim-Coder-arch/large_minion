@@ -3,6 +3,7 @@ import { IPost } from "@/app/data/posts/posts.data";
 import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
+import ErrorTemplate from "@/app/def_components/errors/templateError";
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
@@ -26,8 +27,8 @@ const SecondPetsSection = () => {
         const data = await response.json();
         setPosts(data);
         setError(null);
-      } catch (err) {
-        setError('Не удалось загрузить посты ' + err);
+      } catch  {
+        setError('Упс! Произошла ошибка при загрузке постов');
       } finally {
         setLoading(false);
       }
@@ -46,9 +47,7 @@ const SecondPetsSection = () => {
 
   if (error) {
     return (
-      <div className="error-container">
-        <div className="error-message">{error}</div>
-      </div>
+      <ErrorTemplate error={error} />
     );
   }
 
