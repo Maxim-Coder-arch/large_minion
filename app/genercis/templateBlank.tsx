@@ -20,7 +20,7 @@ export default function TemplateBlank({petsData}: {petsData: IPet[]}) {
       <div className="pet-page">
         <div className="title-pet generic">
           <h1>{data.name}</h1>
-          <Link href={data.href ?? "#"} target="_blank" className="target-action-pet">
+          <Link href={data.urlToVk || "https://vk.com/largeminion"} target="_blank" className="target-action-pet">
             <div className="target-action-button-pet"></div>
             <span>Перейти к посту</span>
           </Link>
