@@ -23,6 +23,9 @@ export const metadata: Metadata = {
   authors: [{ name: 'Ludmila Balibasova'}],
   creator: 'Large Minion',
   publisher: 'Large Minion',
+  verification: {
+    google: "3awNOFGT-m2FZiWFyCkj7xmUNpxtB5J_4sI7TstB5kg"
+  },
   openGraph: {
     title: 'Large Minion | монопородный питомник мейн кунов',
     description: 'Питомник мейн-кунов Large Minion (Большой баловень) зарегистрирован в WCF, состоит в КЛК Kominet. Наши питомцы - победители выставок с крепким здоровьем и идеальными экстерьерными данными. Все животные регулярно прививаются и получают достойный уход.',
