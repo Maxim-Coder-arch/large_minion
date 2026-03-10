@@ -4,9 +4,7 @@ export const linkBlocks: IBasement[] = [
     {
       title: "Контакты",
       links: [
-        { text: "Вконтакте", href: "#", external: true },
-        { text: "Телеграм", href: "#", external: true },
-        { text: "Фейсбук", href: "#", external: true }
+        { text: "Вконтакте", href: "https://vk.com/largeminion", external: true },
       ]
     },
     {
@@ -19,7 +17,8 @@ export const linkBlocks: IBasement[] = [
       title: "Дополнительные ссылки",
       links: [
         { text: "Когтеточки", href: "https://vk.com/kogteto4kisyktyvkar", external: true },
-        { text: "Праздничная атрибутика", href: "https://vk.com/vividribbon", external: true }
+        { text: "Праздничная атрибутика", href: "https://vk.com/vividribbon", external: true },
+        { text: "Международная выставка кошек", href: "https://vk.com/syktshowcats", external: true }
       ]
     },
     {

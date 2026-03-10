@@ -43,7 +43,7 @@ const ScrollMenu = ({ menuData, pathname }: { menuData: IMenu[], pathname: strin
               key={index}
               className={isActive ? 'active-menu-item' : ''}
             >
-              <Link href={item.section === 'basement' ? '/' : item.section}>
+              <Link href={item.section === 'basement' ? '#basement' : item.section}>
                 {item.item}
               </Link>
             </motion.li>
@@ -55,7 +55,7 @@ const ScrollMenu = ({ menuData, pathname }: { menuData: IMenu[], pathname: strin
 };
 
 const GenericMenu = () => {
-  const [isScrolled, setIsScrolled] = useState<boolean>(false); // меняем на false
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const pathname = usePathname();
@@ -93,7 +93,7 @@ const GenericMenu = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrolled = window.scrollY > 50; // true если прокрутили больше 50px
+      const scrolled = window.scrollY > 50;
       setIsScrolled(scrolled);
     };
     
@@ -111,11 +111,7 @@ const GenericMenu = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  // Определяем, показывать ли мобильную версию меню
   const showMobileVersion = isMobile || isScrolled;
-
-  // Если нужно показать мобильную версию (бургер)
   if (showMobileVersion) {
     return (
       <>
@@ -131,8 +127,6 @@ const GenericMenu = () => {
       </>
     );
   }
-
-  // Десктопное меню (только когда не скроллили и не мобилка)
   return (
     <nav className={`menu`}>
       <span>Large Minion</span>
@@ -158,7 +152,7 @@ const GenericMenu = () => {
               className={isActive ? "active-point-menu" : ""}
               key={index}
             >
-              <Link href={item.section === 'basement' ? '/' : item.section}>
+              <Link href={item.section === 'basement' ? '#basement' : item.section}>
                 {item.item}
               </Link>
             </motion.li>

@@ -4,4 +4,5 @@ export interface IPet {
   name: string;
   description: string;
   href?: string;
+  urlToVk?: string;
 }
